@@ -1,0 +1,67 @@
+const withOffline = moduleExists('next-offline') ? require('next-offline') : {}
+
+const nextConfig = {
+  workboxOpts: {
+    swDest: 'static/service-worker.js',
+    clientsClaim: true,
+    skipWaiting: true,
+    runtimeCaching: [
+      {
+        urlPattern: new RegExp('^https://nadalesmoltmesdata.now.sh/(.*)'),
+        handler: 'NetworkOnly'
+      },
+      {
+        urlPattern: /^https?.*/,
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'https-calls',
+          expiration: {
+            maxEntries: 150,
+            maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+          },
+          cacheableResponse: {
+            statuses: [0, 200]
+          }
+        }
+      }
+    ]
+  },
+  exportPathMap: async function(
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/': { page: '/' },
+      '/activitats': { page: '/activitats' },
+      '/a/001': { page: '/activitat', query: { id: '001' } },
+      '/a/002': { page: '/activitat', query: { id: '002' } },
+      '/a/003': { page: '/activitat', query: { id: '003' } },
+      '/a/004': { page: '/activitat', query: { id: '004' } },
+      '/a/005': { page: '/activitat', query: { id: '005' } },
+      '/a/006': { page: '/activitat', query: { id: '006' } },
+      '/a/007': { page: '/activitat', query: { id: '007' } },
+      '/a/008': { page: '/activitat', query: { id: '008' } }
+    }
+  },
+  exportTrailingSlash: true,
+  webpack: config => {
+    // Fixes npm packages that depend on `fs` module
+    config.node = {
+      fs: 'empty'
+    }
+
+    return config
+  }
+}
+
+module.exports = moduleExists('next-offline')
+  ? withOffline(nextConfig)
+  : nextConfig
+
+function moduleExists(name) {
+  try {
+    return require.resolve(name)
+  } catch (error) {
+    return false
+  }
+}

@@ -1,0 +1,67 @@
+import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import React from 'react';
+import CalendarActivitiesDecember from '../components/CalendarActivitiesDecember';
+import CalendarActivitiesJanaury from '../components/CalendarActivitiesJanaury';
+import FilterActivities from '../components/FilterActivities';
+import MainLayout from '../components/MainLayout';
+import BasicPageStyles from '../components/styles/BasicPageStyles';
+import Title from '../components/Title';
+
+const Activitats = props => (
+  <MainLayout mainlayout>
+    <Head>
+      <title>{props.data.description} | Nadal és molt més</title>
+      <meta name="description" content={props.data.description} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `
+          {
+            "@context": "http://schema.org",
+            "@type": "WebPAge",
+            "name": "${props.data.subtitle}",
+            "description": "${props.data.description}",
+            "author": {
+              "@type": "Person",
+              "name": "Ramon Gil"
+            },
+            "publisher": {
+            "@type": "Organization",
+            "name": "Nadal és molt més",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://mexicobaila.com/static/icons/android-chrome-512x512.png"
+                }
+              }, 
+            "image": "${props.data[0].fileImages[0].src}"
+          }`
+        }}
+      />
+    </Head>
+
+    <BasicPageStyles>
+      <div className="hero no--no-height">
+        <Title title={'Més propostes'} />
+        <FilterActivities data={props.data} />
+      </div>
+
+      <div className="hero no--no-height">
+        <CalendarActivitiesDecember data={props.data} />
+        <CalendarActivitiesJanaury data={props.data} />
+      </div>
+    </BasicPageStyles>
+  </MainLayout>
+);
+
+Activitats.getInitialProps = async function() {
+  const res = await fetch(
+    `https://nadalesmoltmesdata.now.sh/activitats-nadal.json`
+  );
+  const data = await res.json();
+
+  return { data };
+};
+
+export default Activitats;
