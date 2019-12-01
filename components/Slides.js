@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
 import { FormattedDate, IntlProvider } from 'react-intl';
+import { useMediaQuery } from 'react-responsive';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Slides = props => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-device-width: 768px)',
+  });
   const slides = props.slides;
   const slideSorteig = props.slideSorteig;
   return (
@@ -16,8 +20,7 @@ const Slides = props => {
       autoPlay={true}
       interval={4500}
       infiniteLoop={true}
-      useKeyboardArrows={true}
-    >
+      useKeyboardArrows={true}>
       {slides
         .sort((a, b) => {
           if (a.id < b.id) {
@@ -30,80 +33,80 @@ const Slides = props => {
         })
         .map((slide, id) => (
           <div
-            className="hero no--no-height slider brown"
-            key={slide.id.toString() + '-' + slide.startDate}
-          >
-            <div className="icona-mes">
-              <div className="row sm-12 md-6 slide">
+            className='hero no--no-height slider brown'
+            key={slide.id.toString() + '-' + slide.startDate}>
+            <div className='icona-mes'>
+              <div className='row sm-12 md-6 slide'>
                 <section>
-                  <h2 className="subtitle">Nadal és molt més</h2>
-                  <h1 className="title">{slide.slideTitle}</h1>
-                  <IntlProvider locale="ca">
-                    <p className="card-location-time">
+                  <h2 className='subtitle'>Nadal és molt més</h2>
+                  <h1 className='title'>{slide.slideTitle}</h1>
+                  <IntlProvider locale='ca'>
+                    <p className='card-location-time'>
                       {slide.endDate ? (
-                        <span className="card-time">
+                        <span className='card-time'>
                           Del{' '}
                           <FormattedDate
-                            year="numeric"
-                            month="long"
-                            day="numeric"
+                            year='numeric'
+                            month='long'
+                            day='numeric'
                             value={slide.startDate}
                           />{' '}
                           al{' '}
                           <FormattedDate
-                            year="numeric"
-                            month="long"
-                            day="numeric"
+                            year='numeric'
+                            month='long'
+                            day='numeric'
                             value={slide.endDate}
                           />
                         </span>
                       ) : (
-                        <span className="card-time">
+                        <span className='card-time'>
                           <FormattedDate
-                            year="numeric"
-                            month="long"
-                            day="numeric"
+                            year='numeric'
+                            month='long'
+                            day='numeric'
                             value={slide.startDate}
                           />
                         </span>
                       )}{' '}
                       <br />
-                      <span className="card-title">{slide.title}</span> a{' '}
-                      <span className="card-place">{slide.place}</span>
+                      <span className='card-title'>{slide.title}</span> a{' '}
+                      <span className='card-place'>{slide.place}</span>
                     </p>
                   </IntlProvider>
-                  <h3>
-                    Més de 80 activitats a la província de Barcelona per passar
-                    un Nadal diferent
-                  </h3>
+                  {isDesktopOrLaptop && (
+                    <h3>
+                      Més de 80 activitats a la província de Barcelona per
+                      passar un Nadal diferent
+                    </h3>
+                  )}
                 </section>
-                <section className="slide-img">
-                  <p className="draw">
-                    <Link href="/sorteig">
+                <section className='slide-img'>
+                  <p className='draw'>
+                    <Link href='/sorteig'>
                       <a title="Participa al sorteig d'un viatge en globus">
                         <img
-                          className="globus-draw"
-                          src="/static/globus.png"
-                          width="140"
-                          height="140"
-                          alt="Icona globus sorteig"
+                          className='globus-draw'
+                          src='/static/globus.png'
+                          width='140'
+                          height='140'
+                          alt='Icona globus sorteig'
                         />
                       </a>
                     </Link>
                   </p>
                   <Link
                     as={`/a/${slide.url}`}
-                    href={`/actvitat?id=${slide.url}`}
-                  >
+                    href={`/actvitat?id=${slide.url}`}>
                     <a>
                       <figure className={`description bottom`}>
                         <div>
                           <img
                             src={slide.cardImage.src}
                             alt={slide.cardImage.alt}
-                            loading="lazy"
-                            width="640"
-                            height="640"
+                            loading='lazy'
+                            width='640'
+                            height='640'
                           />
                         </div>
                       </figure>
@@ -114,19 +117,19 @@ const Slides = props => {
             </div>
           </div>
         ))}
-      <div className="hero no--no-height slider red-hero">
-        <div className="icona-mes-blanca">
-          <div className="row sm-12 md-6 slide">
+      <div className='hero no--no-height slider red-hero'>
+        <div className='icona-mes-blanca-doble'>
+          <div className='row sm-12 md-6 slide'>
             <section>
-              <h1 className="subtitle">{slideSorteig[0].slideTitle}</h1>
+              <h1 className='subtitle'>{slideSorteig[0].slideTitle}</h1>
 
               <p>
                 <Link href={`/${slideSorteig[0].url}`}>
-                  <a className="button white">Participa-hi!</a>
+                  <a className='button white'>Participa-hi!</a>
                 </Link>
               </p>
             </section>
-            <section className="slide-img">
+            <section className='slide-img'>
               <Link href={`/${slideSorteig[0].url}`}>
                 <a>
                   <figure className={`description bottom`}>
@@ -134,9 +137,9 @@ const Slides = props => {
                       <img
                         src={slideSorteig[0].cardImage.src}
                         alt={slideSorteig[0].cardImage.alt}
-                        loading="lazy"
-                        width="640"
-                        height="640"
+                        loading='lazy'
+                        width='640'
+                        height='640'
                       />
                     </div>
                   </figure>

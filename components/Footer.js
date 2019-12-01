@@ -35,6 +35,9 @@ const StyleFooter = styled.footer`
   li img {
     max-width: 100%;
   }
+  li span {
+    margin-right: 1em;
+  }
 `;
 
 const Footer = props => (
@@ -42,43 +45,61 @@ const Footer = props => (
     <nav>
       <ul>
         <li>
-          <a href="https://diba.cat/" target="_blank">
+          <a href='https://diba.cat/' target='_blank'>
             <img
-              src="/static/logo-footer-diputacio-barcelona-nadal-es-molt-mes.png"
-              alt="Logo Diputació de Barcelona | Barcelona és molt més"
+              src='/static/logo-footer-diputacio-barcelona-nadal-es-molt-mes.png'
+              alt='Logo Diputació de Barcelona | Barcelona és molt més'
+              height='45'
+              width='140'
+              loading='lazy'
             />
           </a>
         </li>
-        <li>#DibaOberta #NadalÉsMoltMés #dibacat #BCNmoltmes</li>
         <li>
-          <a href="https://twitter.com/diba" target="_blank">
+          <span>#DibaOberta</span>
+          <span>#NadalÉsMoltMés</span>
+          <span>#dibacat</span>
+          <span>#BCNmoltmes</span>
+        </li>
+        <li>
+          <a href='https://twitter.com/diba' target='_blank'>
             <img
-              src="/static/twitter-footer-diputacio-barcelona-nadal-es-molt-mes.png"
-              alt="Logo Twitter Diputació de Barcelona | Barcelona és molt més"
+              src='/static/twitter-footer-diputacio-barcelona-nadal-es-molt-mes.png'
+              alt='Logo Twitter Diputació de Barcelona | Barcelona és molt més'
+              height='40'
+              width='40'
+              loading='lazy'
             />
           </a>
           <a
-            href="https://www.facebook.com/DiputaciodeBarcelona"
-            target="_blank"
-          >
+            href='https://www.facebook.com/DiputaciodeBarcelona'
+            target='_blank'>
             <img
-              src="/static/fb-footer-diputacio-barcelona-nadal-es-molt-mes.png"
-              alt="Logo Facebook Diputació de Barcelona | Barcelona és molt més"
+              src='/static/fb-footer-diputacio-barcelona-nadal-es-molt-mes.png'
+              alt='Logo Facebook Diputació de Barcelona | Barcelona és molt més'
+              height='40'
+              width='40'
+              loading='lazy'
             />
           </a>
-          <a href="https://www.instagram.com/dibacat/" target="_blank">
+          <a href='https://www.instagram.com/dibacat/' target='_blank'>
             <img
-              src="/static/instagram-footer-diputacio-barcelona-nadal-es-molt-mes.png"
-              alt="Logo Instagram Diputació de Barcelona | Barcelona és molt més"
+              src='/static/instagram-footer-diputacio-barcelona-nadal-es-molt-mes.png'
+              alt='Logo Instagram Diputació de Barcelona | Barcelona és molt més'
+              height='40'
+              width='40'
+              loading='lazy'
             />
           </a>
           <a
-            href="https://www.youtube.com/channel/UCmWbSMykPhTvwamAI7uGBYA"
-            target="_blank"
-          >
+            href='https://www.youtube.com/channel/UCmWbSMykPhTvwamAI7uGBYA'
+            target='_blank'>
             <img
-              src="/static/youtube-footer-diputacio-barcelona-nadal-es-molt-mes.png"
-              alt="Logo Youtube Diputació de Barcelona | Barcelona és molt més"
+              src='/static/youtube-footer-diputacio-barcelona-nadal-es-molt-mes.png'
+              alt='Logo Youtube Diputació de Barcelona | Barcelona és molt més'
+              height='40'
+              width='40'
+              loading='lazy'
             />
           </a>
         </li>

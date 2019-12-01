@@ -393,7 +393,8 @@ const BasicPageStyles = styled.div`
     color: ${props => props.theme.green};
   }
   .icona-mes,
-  .icona-mes-blanca {
+  .icona-mes-blanca,
+  .icona-mes-blanca-doble {
     margin: 0.5em auto;
     max-width: 76rem;
   }
@@ -404,18 +405,27 @@ const BasicPageStyles = styled.div`
   .icona-mes-blanca {
     background: url('/static/icona-mes-blanca.png') repeat-x top left;
   }
+  .icona-mes-blanca-doble {
+    background: url('/static/icona-mes-blanca.png') repeat-x top,
+      url('/static/icona-mes-blanca.png') repeat-x bottom left;
+  }
   .icona-mes div:first-child {
     padding: 2em 0 8em;
   }
-  .red-hero .icona-mes-blanca {
+  .red-hero .icona-mes-blanca,
+  .red-hero .icona-mes-blanca-doble {
     position: relative;
+  }
+  .red-hero .icona-mes-blanca {
     top: 1em;
   }
-  .red-hero .icona-mes-blanca .subtitle {
+  .red-hero .icona-mes-blanca .subtitle,
+  .red-hero .icona-mes-blanca-doble .subtitle {
     padding-top: 1em;
   }
   .slider .icona-mes div:first-child,
   .slider .icona-mes-blanca div:first-child,
+  .slider .icona-mes-blanca-doble div:first-child,
   .icona-mes .bases div:first-child {
     padding: 2em 0.5em 1em;
   }
