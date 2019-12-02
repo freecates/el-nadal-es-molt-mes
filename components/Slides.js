@@ -97,7 +97,7 @@ const Slides = props => {
                   </p>
                   <Link
                     as={`/a/${slide.url}`}
-                    href={`/actvitat?id=${slide.url}`}>
+                    href={`/activitat?id=${slide.url}`}>
                     <a>
                       <figure className={`description bottom`}>
                         <div>

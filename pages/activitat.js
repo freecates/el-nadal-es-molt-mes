@@ -118,7 +118,7 @@ const Activitat = props => (
               <p className='align-left'>
                 <Link
                   as={`/a/` + `${props.anterior}`}
-                  href={`/actvitat?id=` + `${props.anterior}`}>
+                  href={`/activitat?id=` + `${props.anterior}`}>
                   <a
                     title={`Anar a ${
                       props.activitats[props.anterior - 1].title
@@ -140,7 +140,7 @@ const Activitat = props => (
               <p className='align-right'>
                 <Link
                   as={`/a/` + `${props.seguent}`}
-                  href={`/actvitat?id=` + `${props.seguent}`}>
+                  href={`/activitat?id=` + `${props.seguent}`}>
                   <a
                     title={`Anar a ${
                       props.activitats[props.seguent - 1].title
