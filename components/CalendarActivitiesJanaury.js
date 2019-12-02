@@ -101,16 +101,17 @@ const CalendarActivitiesJanaury = props => {
     { day: '2020-01-28T00:00:00.000Z', current: false, active: false },
     { day: '2020-01-29T00:00:00.000Z', current: false, active: false },
     { day: '2020-01-30T00:00:00.000Z', current: false, active: false },
-    { day: '2020-01-31T00:00:00.000Z', current: false, active: false }
+    { day: '2020-01-31T00:00:00.000Z', current: false, active: false },
   ]);
   const [items, setItems] = useState({
     data: props.data.filter(
       x =>
+        new Date(x.startDate).getFullYear() == 2020 &&
         new Date(x.startDate).getDate() == new Date().getDate() &&
         new Date(x.startDate).getMonth() == new Date().getMonth()
-    )
+    ),
   });
-  const [isCurrentDayActivities, setIsCurrentDayActivities] = useState();
+  const [calendarDayActivity, setCalendarDayActivity] = useState();
   const filterDayActivites = useCallback(calendarDay => {
     setItems({ data: props.data });
     setItems({
@@ -126,7 +127,7 @@ const CalendarActivitiesJanaury = props => {
               new Date(calendarDay.day).getDate() &&
             new Date(x.endDate).getMonth() ==
               new Date(calendarDay.day).getMonth())
-      )
+      ),
     });
     const itemsLength = {
       data: props.data.filter(
@@ -137,47 +138,46 @@ const CalendarActivitiesJanaury = props => {
           (new Date(x.endDate).getFullYear() == 2020 &&
             new Date(x.endDate).getDate() ==
               new Date(calendarDay.day).getDate())
-      )
+      ),
     };
     if (itemsLength.data.length == 0) {
-      return null;
+      setCalendarDayActivity(calendarDay.day);
     } else {
-      setIsCurrentDayActivities(false);
+      setCalendarDayActivity(calendarDay.day);
       setCalendarDays([...calendarDays, (calendarDay.active = true)]);
       setCalendarDays(calendarDays);
     }
   }, []);
 
   return (
-    <div className="row sm-12 md-6" id="calendar">
-      <IntlProvider locale="ca">
+    <div className='row sm-12 md-6' id='calendar'>
+      <IntlProvider locale='ca'>
         <TableCalendar>
-          <table id="calendar-janaury">
+          <table id='calendar-janaury'>
             <caption>Gener 2020</caption>
             <thead>
-              <tr className="weekdays">
-                <th scope="col">Dl</th>
-                <th scope="col">Dm</th>
-                <th scope="col">Dc</th>
-                <th scope="col">Dj</th>
-                <th scope="col">Dv</th>
-                <th scope="col">Ds</th>
-                <th scope="col">Dg</th>
+              <tr className='weekdays'>
+                <th scope='col'>Dl</th>
+                <th scope='col'>Dm</th>
+                <th scope='col'>Dc</th>
+                <th scope='col'>Dj</th>
+                <th scope='col'>Dv</th>
+                <th scope='col'>Ds</th>
+                <th scope='col'>Dg</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="days">
-                <td className="day" />
-                <td className="day" />
+              <tr className='days'>
+                <td className='day' />
+                <td className='day' />
                 {calendarDays.map(calendarDay => (
-                  <td className="day" key={calendarDay.day}>
+                  <td className='day' key={calendarDay.day}>
                     <button
                       className={`${
-                        calendarDay.active == true ? 'active' : ''
+                        calendarDay.day == calendarDayActivity ? 'active' : ''
                       } activity-filter-button`}
-                      onClick={() => filterDayActivites(calendarDay)}
-                    >
-                      <FormattedDate value={calendarDay.day} day="numeric" />
+                      onClick={() => filterDayActivites(calendarDay)}>
+                      <FormattedDate value={calendarDay.day} day='numeric' />
                     </button>
                   </td>
                 ))}
@@ -187,24 +187,37 @@ const CalendarActivitiesJanaury = props => {
         </TableCalendar>
       </IntlProvider>
       {items.data.length == 0 ? (
-        ''
+        <section className='event-list'>
+          <div className='day-of-list'>
+            <IntlProvider locale='ca'>
+              <p>
+                <FormattedDate
+                  value={calendarDayActivity}
+                  month='long'
+                  day='numeric'
+                />
+                . No hi ha cap activitat programada aquest dia
+              </p>
+            </IntlProvider>
+          </div>
+        </section>
       ) : (
-        <section className="event-list">
-          <div className="day-of-list">
-            <IntlProvider locale="ca">
+        <section className='event-list'>
+          <div className='day-of-list'>
+            <IntlProvider locale='ca'>
               <h2>
                 <FormattedDate
                   value={items.data[0].startDate}
-                  month="long"
-                  day="numeric"
+                  month='long'
+                  day='numeric'
                 />
                 {items.data[0].endDate && (
                   <>
                     {' / '}
                     <FormattedDate
                       value={items.data[0].endDate}
-                      month="long"
-                      day="numeric"
+                      month='long'
+                      day='numeric'
                     />
                   </>
                 )}
@@ -222,7 +235,12 @@ const CalendarActivitiesJanaury = props => {
               return 0;
             })
             .map((dat, id) => (
-              <List item={dat} id={id} isActiveDayActivities={''} />
+              <List
+                item={dat}
+                id={id}
+                isActiveDayActivities={''}
+                key={`${dat.title}-${dat.startDate}`}
+              />
             ))}
         </section>
       )}

@@ -9,7 +9,7 @@ const NavLink = styled.a`
 const links = [
   { href: '/activitats', label: 'Més propostes' },
   { href: '/postal', label: 'Envia una postal' },
-  { href: '/sorteig', label: 'Sorteig' }
+  { href: '/sorteig', label: 'Sorteig' },
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`;
   return link;
@@ -19,16 +19,19 @@ const Nav = props => (
   <nav>
     <ul>
       <li>
-        <NavLink href={'/'} title="Inici">
+        <NavLink href={'/'} title='Inici'>
           <img
-            src="/static/logo-diputacio-barcelona-nadal-es-molt-mes.png"
-            alt="Logo Diputació de Barcelona | Barcelona és molt més"
+            src='/static/logo-diputacio-barcelona-nadal-es-molt-mes.png'
+            alt='Logo Diputació de Barcelona | Barcelona és molt més'
+            loading='lazy'
+            width='281'
+            height='56'
           />
         </NavLink>
       </li>
       {props.withHome && (
         <li>
-          <NavLink href={'/'} title="Inici">
+          <NavLink href={'/'} title='Inici'>
             Inici
           </NavLink>
         </li>

@@ -7,7 +7,7 @@ module.exports = withCSS({
     const paths = {
       '/': { page: '/' },
       '/activitats': { page: '/activitats' },
-      '/sorteig': { page: '/sorteig' }
+      '/sorteig': { page: '/sorteig' },
     };
     const res = await fetch(
       `https://nadalesmoltmesdata.now.sh/activitats-nadal.json`
@@ -19,7 +19,7 @@ module.exports = withCSS({
     as.forEach(a => {
       paths[`/a/${a.id}`] = {
         page: `/activitat`,
-        query: { id: a.id }
+        query: { id: a.id },
       };
     });
     return paths;
@@ -28,9 +28,9 @@ module.exports = withCSS({
   webpack: config => {
     // Fixes npm packages that depend on `fs` module
     config.node = {
-      fs: 'empty'
+      fs: 'empty',
     };
 
     return config;
-  }
+  },
 });

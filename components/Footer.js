@@ -15,14 +15,22 @@ const StyleFooter = styled.footer`
       justify-content: space-between;
       align-items: center;
     }
+  }
+  @media screen and (min-width: 1024px) {
     li {
       display: flex;
       padding: 6px 8px;
+    }
+    li span {
+      margin-right: 1em;
     }
   }
   nav > ul {
     padding: 4px 16px;
     margin: 0;
+  }
+  li span {
+    display: block;
   }
   li {
     list-style-type: none;
@@ -34,9 +42,6 @@ const StyleFooter = styled.footer`
   }
   li img {
     max-width: 100%;
-  }
-  li span {
-    margin-right: 1em;
   }
 `;
 

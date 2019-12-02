@@ -14,10 +14,10 @@ const Index = props => (
   <MainLayout mainlayout>
     <Head>
       <title>Nadal és molt més</title>
-      <meta name="description" content={'Nadal és molt més'} />
+      <meta name='description' content={'Nadal és molt més'} />
 
       <script
-        type="application/ld+json"
+        type='application/ld+json'
         dangerouslySetInnerHTML={{
           __html: `
           {
@@ -38,38 +38,43 @@ const Index = props => (
                 }
               }, 
             "image": "${props.data[0].fileImages[0].src}"
-          }`
+          }`,
         }}
       />
     </Head>
 
     <BasicPageStyles>
       <Slides slides={props.slides} slideSorteig={props.slideSorteig} />
-      <div className="hero no--no-height">
+      <div className='hero no--no-height'>
         <Title title={'Activitats destacades'} />
-        <div className="row sm-12 md-6 lg-4 xl-3">
-          {props.datafet
-            .sort((a, b) => {
-              if (a.id < b.id) {
-                return -1;
-              }
-              if (a.id > b.id) {
-                return 1;
-              }
-              return 0;
-            })
-            .map((dat, id) => (
-              <IntlProvider locale="ca">
-                <Card item={dat} featured={true} id={id} key={`${id}`} />
-              </IntlProvider>
-            ))}
+        <div className='row sm-12 md-6 lg-4 xl-3'>
+          <IntlProvider locale='ca'>
+            {props.datafet
+              .sort((a, b) => {
+                if (a.id < b.id) {
+                  return -1;
+                }
+                if (a.id > b.id) {
+                  return 1;
+                }
+                return 0;
+              })
+              .map((dat, id) => (
+                <Card
+                  item={dat}
+                  featured={true}
+                  id={id}
+                  key={`${dat.title}-${dat.startDate}`}
+                />
+              ))}
+          </IntlProvider>
         </div>
       </div>
-      <div className="hero no--no-height">
-        <div className="row sm-12"></div>
+      <div className='hero no--no-height'>
+        <div className='row sm-12'></div>
       </div>
 
-      <div className="hero no--no-height">
+      <div className='hero no--no-height'>
         <CalendarActivitiesDecember data={props.data} />
         <CalendarActivitiesJanaury data={props.data} />
       </div>

@@ -47,34 +47,34 @@ class SubscriptionForm extends Component {
     return (
       <StyledForm>
         <form onChange={this.props.onChange} onSubmit={this.props.onSubmit}>
-          <label htmlFor="name">
-            <input type="text" name="name" id="name" placeholder="Nom" />
+          <label htmlFor='name'>
+            <input type='text' name='name' id='name' placeholder='Nom' />
           </label>
-          <label htmlFor="email">
+          <label htmlFor='email'>
             <input
-              type="text"
-              name="email"
-              id="email"
-              placeholder="Correu-e"
+              type='text'
+              name='email'
+              id='email'
+              placeholder='Correu-e'
               className={`${showEmailError ? 'error' : ''}`}
               ref={node => (this.emailNode = node)}
             />
           </label>
           <label>
             <small>
-              <Link href="/bases">
-                <a className="white">Consulta les bases</a>
+              <Link href='/bases'>
+                <a className='white'>Consulta les bases</a>
               </Link>
             </small>
           </label>
           <br />
-          <label htmlFor="accept">
-            <input type="checkbox" name="accept" id="accept" />
+          <label htmlFor='accept'>
+            <input type='checkbox' name='accept' id='accept' />
             <small>Accepto les bases del concurs</small>
           </label>
           <br />
 
-          <button className="button" disabled={!this.props.emailIsValid}>
+          <button className='button' disabled={!this.props.emailIsValid}>
             Participa-hi!
           </button>
         </form>
@@ -91,7 +91,7 @@ class AppForm extends Component {
       email: '',
       emailIsValid: false,
       submitted: false,
-      buttons: this.props.buttons
+      buttons: this.props.buttons,
     };
   }
 
@@ -113,7 +113,7 @@ class AppForm extends Component {
       method: 'get',
       url: `${formUrl}?name=${encodeURIComponent(
         name
-      )}&email=${encodeURIComponent(email)}`
+      )}&email=${encodeURIComponent(email)}`,
     });
 
     this.setState({ submitted: true });
@@ -123,7 +123,7 @@ class AppForm extends Component {
     const { emailIsValid, submitted } = this.state;
 
     return (
-      <div className="align-center">
+      <div className='align-center'>
         {submitted ? (
           <ThankYou buttons={this.state.buttons} />
         ) : (

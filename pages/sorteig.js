@@ -10,10 +10,10 @@ const Sorteig = props => (
   <MainLayout mainlayout>
     <Head>
       <title>{props.data.title} | Nadal és molt més</title>
-      <meta name="description" content={props.data.title} />
+      <meta name='description' content={props.data.title} />
 
       <script
-        type="application/ld+json"
+        type='application/ld+json'
         dangerouslySetInnerHTML={{
           __html: `
           {
@@ -34,20 +34,22 @@ const Sorteig = props => (
                 }
               }, 
             "image": "${'/static/icons/android-chrome-512x512.png'}"
-          }`
+          }`,
         }}
       />
     </Head>
 
     <BasicPageStyles>
-      <div className="hero no--no-height red-hero">
-        <div className="icona-mes-blanca">
-          <h2 className="subtitle">{props.data.title}</h2>
-          <p className="align-center">
+      <div className='hero no--no-height red-hero'>
+        <div className='icona-mes-blanca'>
+          <h2 className='subtitle'>{props.data.title}</h2>
+          <p className='align-center'>
             <img
-              loading="lazy"
+              loading='lazy'
               src={props.data.img.src}
               alt={props.data.img.alt}
+              width={'150'}
+              height={'196'}
             />
           </p>
           <SubscriptionButtons buttons={props.data.subscriptionButtons} />

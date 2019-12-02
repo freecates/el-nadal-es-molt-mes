@@ -64,23 +64,27 @@ function Postal() {
       );
     }
     // Generate meme image from the content of 'content' div
-    domtoimage.toPng(contentContainerRef.current).then(dataUrl => {
-      // Create new image
-      const img = new Image();
-      const link = document.createElement('a');
-      link.download = 'postal-de-nadal-es-molt-mes.png';
-      link.title = 'Postal de Nadal És Molt Més';
-      link.href = dataUrl;
-      link.innerHTML = 'Postal de Nadal';
+    domtoimage
+      .toPng(contentContainerRef.current, { quality: 1 })
+      .then(dataUrl => {
+        // Create new image
+        const img = new Image();
+        const link = document.createElement('a');
+        link.download = 'postal-de-nadal-es-molt-mes.jpeg';
+        link.title = "Descarrega't la Postal de Nadal És Molt Més";
+        link.href = dataUrl;
+        const icon = `<img src='/static/download-nadal-es-molt-mes.png'/>`;
+        console.log(icon);
+        link.innerHTML = `Descarrega ${icon}`;
 
-      // Use url of the generated image as src
-      img.src = dataUrl;
-      // Append new image to DOM
-      //resultContainerRef.current.appendChild(img);
-      resultContainerRef.current.appendChild(link);
-      // Update state for isMemeGenerated
-      setIsMemeGenerated(true);
-    });
+        // Use url of the generated image as src
+        img.src = dataUrl;
+        // Append new image to DOM
+        //resultContainerRef.current.appendChild(img)
+        resultContainerRef.current.appendChild(link);
+        // Update state for isMemeGenerated
+        setIsMemeGenerated(true);
+      });
   }
   // Handle resetting the meme generator/removing existing pictures
   function handleMemeReset() {
@@ -99,10 +103,10 @@ function Postal() {
   return (
     <MainLayout mainlayout>
       <BasicPageStyles>
-        <div className="hero no--no-height">
+        <div className='hero no--no-height'>
           <Title title={'Envia una postal'} />
           <PostalsStyles>
-            <div className="row sm-12 md-6 xl-2-3">
+            <div className='row sm-12 md-6 xl-2-3'>
               <div>
                 <PostalsContent
                   activeImage={activeImage}
@@ -110,8 +114,6 @@ function Postal() {
                   textBottom={textBottom}
                   textTop={textTop}
                 />
-
-                <PostalsResult resultContainerRef={resultContainerRef} />
               </div>
               <div>
                 <PostalsForm
@@ -124,6 +126,7 @@ function Postal() {
                   handleMemeReset={handleMemeReset}
                   isMemeGenerated={isMemeGenerated}
                 />
+                <PostalsResult resultContainerRef={resultContainerRef} />
               </div>
             </div>
           </PostalsStyles>

@@ -30,6 +30,9 @@ const PostalsStyles = styled.section`
     bottom: 80px;
   }
   /* Form */
+  .result img {
+    vertical-align: middle;
+  }
   .form {
     margin: 0 auto;
     max-width: 380px;
