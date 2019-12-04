@@ -7,15 +7,15 @@ import BasicPageStyles from '../components/styles/BasicPageStyles';
 import SubscriptionButtons from '../components/SubscriptionButtons';
 
 const Sorteig = props => (
-  <MainLayout mainlayout>
-    <Head>
-      <title>{props.data.title} | Nadal és molt més</title>
-      <meta name='description' content={props.data.title} />
+    <MainLayout mainlayout>
+        <Head>
+            <title>{props.data.title} | Nadal és molt més</title>
+            <meta name='description' content={props.data.title} />
 
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: `
+            <script
+                type='application/ld+json'
+                dangerouslySetInnerHTML={{
+                    __html: `
           {
             "@context": "http://schema.org",
             "@type": "WebPAge",
@@ -26,38 +26,36 @@ const Sorteig = props => (
               "name": "Ramon Gil"
             },
             "publisher": {
-            "@type": "Organization",
-            "name": "Nadal és molt més",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "/static/icons/android-chrome-512x512.png"
-                }
-              }, 
-            "image": "${'/static/icons/android-chrome-512x512.png'}"
+              "@type": "Organization",
+              "name": "Nadal és molt més",
+              "url": "https://diba.cat/",
+              "logo": "https://nadalesmoltmes.diba.cat/static/icons/android-chrome-512x512.png"
+                },  
+            "image": "${props.data.img.src}"
           }`,
-        }}
-      />
-    </Head>
-
-    <BasicPageStyles>
-      <div className='hero no--no-height red-hero'>
-        <div className='icona-mes-blanca'>
-          <h2 className='subtitle'>{props.data.title}</h2>
-          <p className='align-center'>
-            <img
-              loading='lazy'
-              src={props.data.img.src}
-              alt={props.data.img.alt}
-              width={'150'}
-              height={'196'}
+                }}
             />
-          </p>
-          <SubscriptionButtons buttons={props.data.subscriptionButtons} />
-          <AppForm buttons={props.data.subscriptionButtons} />
-        </div>
-      </div>
-    </BasicPageStyles>
-  </MainLayout>
+        </Head>
+
+        <BasicPageStyles>
+            <div className='hero no--no-height red-hero'>
+                <div className='icona-mes-blanca'>
+                    <h2 className='subtitle'>{props.data.title}</h2>
+                    <p className='align-center'>
+                        <img
+                            loading='lazy'
+                            src={props.data.img.src}
+                            alt={props.data.img.alt}
+                            width={'150'}
+                            height={'196'}
+                        />
+                    </p>
+                    <SubscriptionButtons buttons={props.data.subscriptionButtons} />
+                    <AppForm buttons={props.data.subscriptionButtons} />
+                </div>
+            </div>
+        </BasicPageStyles>
+    </MainLayout>
 );
 
 Sorteig.getInitialProps = async function() {
