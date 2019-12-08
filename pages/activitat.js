@@ -12,7 +12,7 @@ const Activitat = props => (
   <MainLayout mainlayout>
     <Head>
       <title>{props.data.title} | Nadal és molt més</title>
-      <meta name='description' content={props.data.content} />
+      <meta name='description' content={props.data.content[0].text} />
 
       <script
         type='application/ld+json'
@@ -20,22 +20,21 @@ const Activitat = props => (
           __html: `
           {
             "@context": "http://schema.org",
-            "@type": "WebPAge",
+            "@type": "Event",
             "name": "${props.data.title}",
-            "description": "${props.data.content[0].text}",
-            "author": {
-              "@type": "Person",
-              "name": "Ramon Gil"
+            "startDate": "${props.data.startDate}",
+            "endDate": "${props.endDate}",
+            "location": {
+              "@type": "Place",
+              "name": "${props.location}",
+              "address": {
+                "addressLocality": "${props.data.place}",
+                "addressRegion": "Catalunya",
+                "addressCountry": "Spain"
+              }
             },
-            "publisher": {
-            "@type": "Organization",
-            "name": "Nadal és molt més",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://mexicobaila.com/static/icons/android-chrome-512x512.png"
-                }
-              }, 
-            "image": "${props.data.fileImages[0].src}"
+            "image": ["${props.data.fileImages[0].src}"],
+            "description": "${props.data.content[0].text}"
           }`,
         }}
       />
@@ -167,11 +166,27 @@ Activitat.getInitialProps = async function(context) {
 
   const [data] = activitats.filter(x => x.id == id);
 
+  let location;
+
+  if (data.location.length > 0) {
+    location = data.location;
+  } else {
+    location = data.place;
+  }
+
+  let endDate;
+
+  if (data.endDate.length > 0) {
+    endDate = data.endDate;
+  } else {
+    endDate = data.startDate;
+  }
+
   const anterior = data.id - 1;
 
   const seguent = data.id + 1;
 
-  return { data, activitats, anterior, seguent };
+  return { data, activitats, anterior, seguent, location, endDate };
 };
 
 export default Activitat;
