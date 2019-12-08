@@ -31,7 +31,7 @@ const Bases = props => (
             "name": "Nadal és molt més",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://mexicobaila.com/static/icons/android-chrome-512x512.png"
+              "url": "https://nadalesmoltmes.diba.cat/static/icons/android-chrome-512x512.png"
                 }
               }, 
             "image": "${props.data.fileImages[0].src}"

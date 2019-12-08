@@ -12,7 +12,7 @@ const Card = props => {
         >
           <Link
             as={`/a/${props.item.id}`}
-            href={`/actvitat?id=${props.item.id}`}
+            href={`/activitat?id=${props.item.id}`}
           >
             <a>
               <main className="featured">
@@ -55,7 +55,7 @@ const Card = props => {
         >
           <Link
             as={`/a/${props.item.id}`}
-            href={`/actvitat?id=${props.item.id}`}
+            href={`/activitat?id=${props.item.id}`}
           >
             <a>
               <main>

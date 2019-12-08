@@ -21,7 +21,7 @@ const List = props => {
           <p>
             <Link
               as={`/a/${props.item.id}`}
-              href={`/actvitat?id=${props.item.id}`}
+              href={`/activitat?id=${props.item.id}`}
             >
               <a>
                 <small>+ info</small>

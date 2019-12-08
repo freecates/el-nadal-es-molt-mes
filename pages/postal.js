@@ -74,7 +74,6 @@ function Postal() {
         link.title = "Descarrega't la Postal de Nadal És Molt Més";
         link.href = dataUrl;
         const icon = `<img src='/static/download-nadal-es-molt-mes.png'/>`;
-        console.log(icon);
         link.innerHTML = `Descarrega ${icon}`;
 
         // Use url of the generated image as src
