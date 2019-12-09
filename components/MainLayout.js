@@ -1,22 +1,12 @@
-import { useEffect } from 'react'
-import styled from 'styled-components'
-import { initGA, logPageView } from '../utils/analytics'
+import styled from 'styled-components';
 
 const MainStyle = styled.main`
   max-width: 100%;
   max-width: ${props => props.theme.maxWidth};
   margin-top: 82px;
-`
+`;
 
 export default function MainLayout(props) {
-  useEffect(() => {
-    if (!window.GA_INITIALIZED) {
-      initGA()
-      window.GA_INITIALIZED = true
-    }
-    logPageView()
-  })
-
   return (
     <>
       {props.mainlayout && (
@@ -25,5 +15,5 @@ export default function MainLayout(props) {
         </div>
       )}
     </>
-  )
+  );
 }
