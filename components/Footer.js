@@ -50,7 +50,7 @@ const Footer = props => (
     <nav>
       <ul>
         <li>
-          <a href='https://diba.cat/' target='_blank'>
+          <a href='https://diba.cat/' rel='noopener' target='_blank'>
             <img
               src='/static/logo-footer-diputacio-barcelona-nadal-es-molt-mes.png'
               alt='Logo Diputació de Barcelona | Barcelona és molt més'
@@ -67,7 +67,7 @@ const Footer = props => (
           <span>#BCNmoltmes</span>
         </li>
         <li>
-          <a href='https://twitter.com/diba' target='_blank'>
+          <a href='https://twitter.com/diba' rel='noopener' target='_blank'>
             <img
               src='/static/twitter-footer-diputacio-barcelona-nadal-es-molt-mes.png'
               alt='Logo Twitter Diputació de Barcelona | Barcelona és molt més'
@@ -78,6 +78,7 @@ const Footer = props => (
           </a>
           <a
             href='https://www.facebook.com/DiputaciodeBarcelona'
+            rel='noopener'
             target='_blank'>
             <img
               src='/static/fb-footer-diputacio-barcelona-nadal-es-molt-mes.png'
@@ -87,7 +88,10 @@ const Footer = props => (
               loading='lazy'
             />
           </a>
-          <a href='https://www.instagram.com/dibacat/' target='_blank'>
+          <a
+            href='https://www.instagram.com/dibacat/'
+            rel='noopener'
+            target='_blank'>
             <img
               src='/static/instagram-footer-diputacio-barcelona-nadal-es-molt-mes.png'
               alt='Logo Instagram Diputació de Barcelona | Barcelona és molt més'
@@ -98,6 +102,7 @@ const Footer = props => (
           </a>
           <a
             href='https://www.youtube.com/channel/UCmWbSMykPhTvwamAI7uGBYA'
+            rel='noopener'
             target='_blank'>
             <img
               src='/static/youtube-footer-diputacio-barcelona-nadal-es-molt-mes.png'
