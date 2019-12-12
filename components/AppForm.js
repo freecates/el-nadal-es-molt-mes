@@ -69,7 +69,7 @@ class SubscriptionForm extends Component {
           </label>
           <br />
           <label htmlFor='accept'>
-            <input type='checkbox' name='accept' id='accept' />
+            <input type='checkbox' name='isAccepted' id='isAccepted' />
             <small>Accepto les bases del concurs</small>
           </label>
           <br />
@@ -84,62 +84,65 @@ class SubscriptionForm extends Component {
 }
 
 class AppForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            email: '',
-            checked: this.props.checked,
-            emailIsValid: false,
-            submitted: false,
-            buttons: this.props.buttons,
-        };
-    }
-
-    checkboxChecked = () => {
-        this.setState({ checked: !this.state.checked });
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      emailIsValid: false,
+      submitted: false,
+      isAccepted: false,
+      buttons: this.props.buttons,
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
 
-    validateEmail = () => {
-        this.setState({ emailIsValid: validator.validate(this.state.email) });
-    };
+  validateEmail = () => {
+    this.setState({ emailIsValid: validator.validate(this.state.email) });
+  };
 
-    updateValues = e => {
-        e.preventDefault();
-        this.setState({ [e.target.name]: e.target.value });
-        this.checkboxChecked();
-        this.validateEmail();
-    };
+  handleInputChange(e) {
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
-    handleSubmit = e => {
-        e.preventDefault();
-        const { name, email } = this.state;
+    this.setState({
+      [name]: value,
+    });
+    this.validateEmail();
+  }
 
-        axios({
-            method: 'get',
-            url: `${formUrl}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`,
-        });
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name, email } = this.state;
 
-        this.setState({ submitted: true });
-    };
+    axios({
+      method: 'get',
+      url: `${formUrl}?name=${encodeURIComponent(
+        name
+      )}&email=${encodeURIComponent(email)}`,
+    });
 
-    render() {
-        const { emailIsValid, submitted } = this.state;
+    this.setState({ submitted: true });
+  };
 
-        return (
-            <div className='align-center'>
-                {submitted ? (
-                    <ThankYou buttons={this.state.buttons} />
-                ) : (
-                    <SubscriptionForm
-                        onChange={this.updateValues}
-                        onSubmit={this.handleSubmit}
-                        emailIsValid={emailIsValid}
-                    />
-                )}
-            </div>
-        );
-    }
+  render() {
+    const { emailIsValid, submitted } = this.state;
+
+    return (
+      <div className='align-center'>
+        {submitted ? (
+          <ThankYou buttons={this.state.buttons} />
+        ) : (
+          <SubscriptionForm
+            onChange={this.handleInputChange}
+            onSubmit={this.handleSubmit}
+            emailIsValid={emailIsValid}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
 export default AppForm;
