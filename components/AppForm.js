@@ -46,7 +46,10 @@ class SubscriptionForm extends Component {
     const showEmailError = this.emailNode && !this.props.emailIsValid;
     return (
       <StyledForm>
-        <form onChange={this.props.onChange} onSubmit={this.props.onSubmit}>
+        <form
+          onChange={this.props.onChange}
+          onSubmit={this.props.onSubmit}
+          onAccepted={this.props.isAccepted}>
           <label htmlFor='name'>
             <input type='text' name='name' id='name' placeholder='Nom' />
           </label>
@@ -74,7 +77,9 @@ class SubscriptionForm extends Component {
           </label>
           <br />
 
-          <button className='button' disabled={!this.props.emailIsValid}>
+          <button
+            className='button'
+            disabled={!this.props.emailIsValid || !this.props.isAccepted}>
             Participa-hi!
           </button>
         </form>
@@ -127,7 +132,7 @@ class AppForm extends Component {
   };
 
   render() {
-    const { emailIsValid, submitted } = this.state;
+    const { emailIsValid, submitted, isAccepted } = this.state;
 
     return (
       <div className='align-center'>
@@ -138,6 +143,7 @@ class AppForm extends Component {
             onChange={this.handleInputChange}
             onSubmit={this.handleSubmit}
             emailIsValid={emailIsValid}
+            isAccepted={isAccepted}
           />
         )}
       </div>
