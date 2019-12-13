@@ -28,6 +28,10 @@ const StyledForm = styled.section`
     text-decoration: none;
     display: inline-block;
     margin-top: 1em;
+    cursor: pointer;
+  }
+  .button[disabled] {
+    cursor:not-allowed;
   }
   input[type='checkbox'] {
     width: 15px;
