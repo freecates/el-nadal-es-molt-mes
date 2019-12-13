@@ -23,8 +23,8 @@ const Bases = props => (
             "name": "${props.data.title}",
             "description": "${props.data.content[0].text}",
             "author": {
-              "@type": "Person",
-              "name": "Ramon Gil"
+              "@type": "Organization",
+              "name": "Diputació de Barcelona"
             },
             "publisher": {
             "@type": "Organization",

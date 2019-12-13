@@ -25,8 +25,8 @@ const Activitats = props => (
             "name": "${props.data.subtitle}",
             "description": "${props.data.description}",
             "author": {
-              "@type": "Person",
-              "name": "Ramon Gil"
+              "@type": "Organization",
+              "name": "Diputació de Barcelona"
             },
             "publisher": {
               "@type": "Organization",

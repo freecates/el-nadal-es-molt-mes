@@ -26,8 +26,8 @@ const Index = props => (
             "name": "${'Nadal és molt més'}",
             "description": "${'Nadal és molt més'}",
             "author": {
-              "@type": "Person",
-              "name": "Ramon Gil"
+              "@type": "Organization",
+              "name": "Diputació de Barcelona"
             },
             "publisher": {
               "@type": "Organization",

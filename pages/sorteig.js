@@ -22,8 +22,8 @@ const Sorteig = props => (
             "name": "${props.data.title}",
             "description": "${props.data.title}",
             "author": {
-              "@type": "Person",
-              "name": "Ramon Gil"
+              "@type": "Organization",
+              "name": "Diputació de Barcelona"
             },
             "publisher": {
               "@type": "Organization",
