@@ -8,7 +8,7 @@ module.exports = withCSS({
       '/': { page: '/' },
       '/activitats': { page: '/activitats' },
       '/sorteig': { page: '/sorteig' },
-'/bases': { page: 'bases' },
+      '/bases': { page: 'bases' },
     };
     const res = await fetch(
       `https://nadalesmoltmesdata.now.sh/activitats-nadal.json`
