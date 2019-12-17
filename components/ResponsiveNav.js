@@ -8,7 +8,7 @@ const ResponsiveNav = props => {
     query: '(min-device-width: 1024px)',
   });
   const isTabletOrMobileDevice = useMediaQuery({
-    query: '(max-device-width: 768px)',
+    query: '(max-device-width: 823px)',
   });
 
   return (
