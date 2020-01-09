@@ -1,6 +1,9 @@
 {
   "name": "nadal-es-molt-mes",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
