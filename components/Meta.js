@@ -59,6 +59,8 @@ const Meta = () => (
       sizes="640x1136"
       rel="apple-touch-startup-image"
     />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
     <title>Nadal és molt més</title>
   </Head>
 )
