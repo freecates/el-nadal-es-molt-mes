@@ -1,8 +1,7 @@
 const fetch = require('isomorphic-unfetch');
-const withCSS = require('@zeit/next-css');
 
 // next.config.js
-module.exports = withCSS({
+module.exports = {
   exportPathMap: async function() {
     const paths = {
       '/': { page: '/' },
@@ -34,4 +33,4 @@ module.exports = withCSS({
 
     return config;
   },
-});
+};

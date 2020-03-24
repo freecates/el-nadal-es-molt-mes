@@ -1,5 +1,6 @@
 import App from 'next/app';
 import dynamic from 'next/dynamic';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const DynamicComponentWithCustomLoading = dynamic(
   () => import('../components/Page'),
