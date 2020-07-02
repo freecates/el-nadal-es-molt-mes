@@ -3,7 +3,6 @@ import React from 'react';
 import { FormattedDate, IntlProvider } from 'react-intl';
 import { useMediaQuery } from 'react-responsive';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Slides = props => {
   const isDesktopOrLaptop = useMediaQuery({
